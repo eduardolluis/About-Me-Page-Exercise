@@ -292,6 +292,7 @@ h1 {
 .portfolio__project:hover {
     opacity: .74;
     outline: 2px solid #fff6;
+    cursor: pointer;
 }
 
 /*---------- PORTFOLIO QUERIES-------*/
@@ -416,6 +417,11 @@ h1 {
     .form__input-container :is(input,textarea) {
         box-shadow: none;
         border-radius: 4px;        
+    }
+
+    button {
+        cursor:pointer;
+        opacity: .7;
     }
 
    
