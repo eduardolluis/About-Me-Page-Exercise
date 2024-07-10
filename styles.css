@@ -23,14 +23,13 @@ div, ul, nav, header, footer, a , li, label, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    container-type: inline-size;
-    container-name: header;
-    position: relative;
     z-index: 10;
     text-align: center;
     font-size: 20px;
     position: sticky;
     top: 0;
+    color: #48e;
+    
     
 }
 
@@ -83,7 +82,7 @@ div, ul, nav, header, footer, a , li, label, body {
 }
 
 .header__nav-item a {
-    color: #48e;
+    color: inherit;
 }
 
 .header__nav-item a:not(:is(:hover,:active)) {
@@ -91,13 +90,23 @@ div, ul, nav, header, footer, a , li, label, body {
 }
 /*--------- HEADER QUERIES----------*/
 
-@container header (min-width: 600px) {
+@media screen and  (min-width: 600px) {
+
+    .header {
+        position: sticky;
+        top: 0;
+        padding: 20px 0;
+        animation: header-movement both;
+        animation-timeline: scroll(); 
+        animation-range: 10px 100px;
+    }
     .header__nav {
         display: block;
         position: static;
         height: auto;
         width: auto;
-        justify-content: space-between  ;
+        justify-content: space-between;
+        background-color: initial;
     }
 
 
@@ -122,6 +131,7 @@ div, ul, nav, header, footer, a , li, label, body {
 .profile {
     container-name: profile;
     container-type: inline-size;
+    animation: aparecer 2.4s -.6s both
 }
 .profile__wrapper {
     display: flex;
@@ -287,7 +297,11 @@ h1 {
     display: grid;
     place-content: center;
     border-radius: 8px;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 43%;
 }
+
 
 .portfolio__project:hover {
     opacity: .74;
@@ -310,7 +324,7 @@ h1 {
         grid-column: span 2;
     } 
     
-
+    
 }
 
 @container portfolio (min-width: 81.25rem) {
@@ -345,6 +359,9 @@ h1 {
     padding: 30px 0;
     container-name: form;
     container-type: inline-size;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 11% contain 40%;
 }
 
 .form__form {
@@ -419,21 +436,14 @@ h1 {
         border-radius: 4px;        
     }
 
-    button {   
-        cursor: pointer;
-        opacity: .7;
+    input[type='submit']:hover {
+    opacity: 0.7;
+    cursor: pointer;
     }
-
-   
 
 }
 
 /*-------- CONTACT ENDS----------*/
-
-
-
-
-
 
 
 /*-------- FOOTER SECTION----------*/
@@ -445,3 +455,32 @@ footer {
     color: #fffd;
     font-size: 22px;
 }
+
+
+/*---------ANIMATIONS -------*/
+
+@keyframes header-movement {
+    from {
+        padding: 20px 0;
+        background-color: #fff;
+    }
+
+    to {
+        padding: 0;
+        background-color: #10163226;
+        color: #fff
+
+    }
+}
+@keyframes aparecer {
+    from {
+    opacity: 0;
+}
+
+    to {
+        opacity: 1;
+
+    }
+}   
+
+
